@@ -108,6 +108,7 @@ h1 {
   color: #0366d6;
   font-weight: 500;
   transition: color 0.2s ease;
+  word-break: break-word;
 }
 
 .github-link:hover {
@@ -122,6 +123,7 @@ h1 {
   fill: currentColor;
   vertical-align: middle;
   margin-top: -2px;
+  flex-shrink: 0;
 }
 
 .author-info {
@@ -146,14 +148,17 @@ h1 {
 @media (max-width: 768px) {
   .article-header {
     padding: 2rem 1rem 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    margin-bottom: 0.6rem;
   }
 
   .subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
   }
 
   .author-info {
@@ -163,6 +168,16 @@ h1 {
 
   .publication-date:before {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
   }
 }
 </style>

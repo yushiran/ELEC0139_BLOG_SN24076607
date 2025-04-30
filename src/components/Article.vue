@@ -898,14 +898,23 @@ import { Niivue } from '@niivue/niivue';
 <style scoped>
 .niivue-container {
     margin: 2rem auto;
-    /* 增加顶部和底部的间距 */
     border-radius: 0.5rem;
     overflow: hidden;
     box-shadow: 0 0.25rem 0.9rem var(--shadow-color);
     max-width: 700px;
-    /* 限制最大宽度 */
+    width: 100%;
     aspect-ratio: 16 / 9;
-    /* 设置宽高比为 16:9 */
+}
+
+@media (max-width: 768px) {
+    .niivue-container {
+        max-width: 100%;
+    }
+    
+    .niivue-container canvas {
+        width: 100% !important;
+        height: auto !important;
+    }
 }
 
 .article-container {
