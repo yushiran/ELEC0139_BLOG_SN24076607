@@ -1,5 +1,5 @@
 # ELEC0139_BLOG_24076607
-https://24076607.github.io/ELEC0139_BLOG_SN24076607/
+https://yushiran.github.io/ELEC0139_BLOG_SN24076607/
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
