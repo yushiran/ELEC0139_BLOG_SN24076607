@@ -5,17 +5,35 @@
 
         <div class="article-content">
             <article-section id="application-domain" title="Application Domain and Challenges">
-                <p>
-                    Medical imaging is pivotal in modern diagnostics, providing non-invasive methods to visualize internal structures of the human body. It encompasses a wide range of imaging modalities, including magnetic resonance imaging (MRI), computed tomography (CT), and X-rays, each offering different contrast mechanisms and spatial resolutions to support clinical diagnosis and treatment planning.
-                    <Reference citationKey="8730517" />.
-                </p>
-                <p>
-                    In recent years, medical imaging has been revolutionized by the advances in computer vision and deep learning technologies. These technologies have significantly enhanced the capability of automatic image analysis systems, particularly in tasks like medical image segmentation (MedSeg), which involves partitioning images into regions corresponding to specific organs or lesions such as the chest, brain, abdomen, eye, and heart.
-                </p>
-                <div class="hero-image">
-                    <img src="/src/assets/Roberts_building.jpg" alt="Roberts Building" />
-                    <p class="image-caption">Roberts Building - A key location for medical imaging research</p>
-                </div>
+                <sub-section id="application-domin-medical-imaging" title="The Application Domain: Medical Imaging">
+                    <p>
+                        Medical imaging is a critical field in healthcare, providing essential tools for diagnosing and monitoring diseases. It encompasses various imaging modalities, including X-rays, CT scans, MRI, and ultrasound, each with its unique strengths and applications.
+                    </p>
+                    <p>
+                    The segmentation process plays a fundamental role in medical image analysis by enabling pixel-level identification of anatomical structures, facilitating precise diagnosis and personalized treatment<Reference citationKey="kumarTripleClippedHistogramBased2021" />. CT imaging, for instance, has been extensively used in diagnosing lung infections during the COVID-19 pandemic<Reference citationKey="LIU2020244" /><Reference citationKey="9446143" /><Reference citationKey="YI2019101552" />. While manual segmentation by radiologists is accurate, it remains labor-intensive, time-consuming, and costly, driving demand for automated methods using deep learning<Reference citationKey="TAJBAKHSH2020101693" />. These computational approaches address efficiency challenges while maintaining the diagnostic value that makes medical imaging indispensable in contemporary healthcare systems.
+                    </p>
+                </sub-section>
+                <sub-section id="challenges-in-medical-imaging" title="Current Challenges: Data Scarcity and Its Implications">
+                    <p>
+                        Medical image segmentation has witnessed tremendous progress with deep learning, yet its success remains heavily dependent on the availability of large-scale, high-quality annotated datasets. Unfortunately, several persistent challenges hinder the widespread deployment of AI models in medical imaging, especially in real-world clinical environments.
+                    </p>
+                    <sub-sub-section id="limited-annotated-datasets" title="Limited Annotated Datasets">
+                        <p>
+                            Obtaining labeled medical imaging data is a labor-intensive and costly process, typically requiring the expertise of trained radiologists and high-end equipment. Manual annotation, such as pixel-wise segmentation, is especially time-consuming. As a result, the availability of large annotated datasets remains limited​. Moreover, privacy regulations and patient confidentiality further restrict data sharing and public availability​\cite{TAJBAKHSH2020101693}.
+                        </p>
+                    </sub-sub-section>
+                    <sub-sub-section id="bias-and-generalizability-issues" title="Bias and Generalizability Issues">
+                        <p>
+                            Even when labeled datasets are available, they are often limited in diversity, both demographically and technically (e.g., variation in scanner models or acquisition protocols). This lack of heterogeneity leads to significant distribution shift problems when models trained on one dataset are deployed on another, ultimately affecting their generalization performance across populations and institutions​.
+                        </p>
+                    </sub-sub-section>
+                    <sub-sub-section id="resource-constraints" title="Resource Constraints">
+                        <p>
+                            Healthcare systems in low- and middle-income regions face acute shortages in data collection infrastructure and medical imaging resources. The high costs of annotation and hardware requirements for data processing place an additional burden on AI development in such contexts. While deep learning architectures like U-Nets are widely adopted in academic research, deploying them in under-resourced settings remains a formidable challenge​.
+                        </p>
+                    </sub-sub-section>
+                </sub-section>
+              
             </article-section>
 
             <article-section id="data-scarcity" title="Current Challenges: Data Scarcity and Its Implications">
@@ -36,6 +54,8 @@
 <script setup>
 import ArticleHeader from './ArticleHeader.vue';
 import ArticleSection from './ArticleSection.vue';
+import SubSection from './SubSection.vue';
+import SubSubSection from './SubSubSection.vue';
 import FooterComponent from './Footer.vue';
 import Reference from './Reference.vue';
 

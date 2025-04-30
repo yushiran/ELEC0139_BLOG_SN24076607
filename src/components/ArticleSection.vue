@@ -60,6 +60,16 @@ defineProps({
   margin-right: auto;
 }
 
+.subsubsection-title {
+  color: var(--heading-color);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 h2 {
   font-size: 1.9rem;
   color: var(--heading-color);
@@ -82,6 +92,32 @@ h2::after {
   /* 使用相对单位代替2px */
 }
 
+h3 {
+  font-size: 1.6rem;
+  color: var(--heading-color);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  position: relative;
+}
+
+h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2.5rem;
+  height: 0.15rem;
+  background: linear-gradient(90deg, #4299e1, #63b3ed);
+  border-radius: 0.125rem;
+}
+
+h4 {
+  font-size: 1.3rem;
+  color: var(--heading-color);
+  margin-bottom: 0.4rem;
+  position: relative;
+}
+
 .section-content {
   line-height: 1.8;
   color: var(--text-color);
@@ -96,6 +132,12 @@ h2::after {
   color: var(--heading-color);
   margin: 1.5rem 0 0.8rem;
   font-size: 1.4rem;
+}
+
+.section-content h4 {
+  color: var(--heading-color);
+  margin: 1.2rem 0 0.6rem;
+  font-size: 1.2rem;
 }
 
 .section-content ul,
@@ -113,8 +155,20 @@ h2::after {
     font-size: 1.6rem;
   }
 
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
   .section-content h3 {
     font-size: 1.25rem;
+  }
+
+  .section-content h4 {
+    font-size: 1.1rem;
   }
 }
 </style>

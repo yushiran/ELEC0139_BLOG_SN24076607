@@ -23,11 +23,14 @@
 \maketitle
 %
 \begin{abstract}
-    This section provides a brief overview of the methodology/results presented in the report.\footnote{The Blog is provided \url{https://yushiran.github.io/ELEC0139_BLOG_SN24076607/} and GitHub project: \url{https://github.com/yushiran/ELEC0139_BLOG_SN24076607}}
+Medical imaging plays a crucial role in modern healthcare, but the effectiveness of advanced AI systems for image analysis is often limited by data scarcity. This paper examines how AI and machine learning technologies can bridge this data gap through three main approaches: self-supervised learning, reinforcement learning, and generative models. 
+Self-supervised learning enables the extraction of meaningful representations from unlabeled medical images, while reinforcement learning provides frameworks for learning optimal policies with minimal supervision. Generative models, particularly GANs and diffusion models, synthesize realistic medical images to augment limited datasets while preserving patient privacy. 
+I present the mathematical foundations, implementation details, and clinical applications of these approaches, alongside a discussion of ethical considerations including privacy protection, bias mitigation, transparency, and appropriate governance frameworks. 
+\footnote{Blog Website: \url{https://yushiran.github.io/ELEC0139_BLOG_SN24076607/}, GitHub repository: \url{https://github.com/yushiran/ELEC0139_BLOG_SN24076607}}
 \end{abstract}
 %
 \begin{keywords}
-    One, two, three, four, five
+Medical Imaging, Data Scarcity, Generative Adversarial Networks, Diffusion Models, Self-supervised Learning, Reinforcement Learning, Synthetic Data, Deep Learning, Ethical Considerations
 \end{keywords}
 %
 
@@ -35,16 +38,9 @@
 \label{sec:app_domain}
 
 \subsection{The Application Domain: Medical Imaging}
-Medical imaging is pivotal in modern diagnostics, providing non-invasive methods to visualize internal structures of the human body. It encompasses a wide range of imaging modalities, including magnetic resonance imaging (MRI), computed tomography (CT), and X-rays, each offering different contrast mechanisms and spatial resolutions to support clinical diagnosis and treatment planning.
+Medical imaging encompasses diverse modalities including MRI, CT scans, and X-rays, providing non-invasive visualization of internal body structures with varying contrast mechanisms and spatial resolutions. These technologies form the cornerstone of modern healthcare, enabling earlier detection, better disease monitoring, and improved patient outcomes. In recent years, medical imaging has been revolutionized by advances in computer vision and deep learning technologies\cite{upadhyayAdvancesDeepLearning2024}, significantly enhancing automatic image analysis capabilities, particularly in segmentation tasks that involve partitioning images into regions corresponding to specific organs or lesions\cite{sushankiReviewComputationalMethods2024}.
 
-In recent years, medical imaging has been revolutionized by the advances in computer vision and deep learning technologies​\cite{upadhyayAdvancesDeepLearning2024}. 
-These technologies have significantly enhanced the capability of automatic image analysis systems, particularly in tasks like medical image segmentation (MedSeg), which involves partitioning images into regions corresponding to specific organs or lesions such as the chest, brain, abdomen, eye, and heart\cite{sushankiReviewComputationalMethods2024}​.
-
-Among the imaging modalities, CT scans, MRI, and X-rays are especially critical in detecting and monitoring various health conditions. For instance, CT imaging has been extensively used in diagnosing lung infections during the COVID-19 pandemic, as evidenced by the segmentation of lung infection regions in CT scans​\cite{LIU2020244,9446143,YI2019101552}.
-
-The segmentation process itself plays a fundamental role in medical image analysis by enabling pixel-level identification of anatomical structures, facilitating precise diagnosis and personalized treatment​\cite{kumarTripleClippedHistogramBased2021}. Manual segmentation by radiologists, although accurate, is labor-intensive, time-consuming, and costly, thus driving the demand for automated methods that leverage deep learning​\cite{TAJBAKHSH2020101693}.
-
-Overall, medical imaging, supported by modern computational methods, forms the cornerstone of contemporary healthcare, enabling earlier detection, better disease monitoring, and improved patient outcomes.
+The segmentation process plays a fundamental role in medical image analysis by enabling pixel-level identification of anatomical structures, facilitating precise diagnosis and personalized treatment\cite{kumarTripleClippedHistogramBased2021}. CT imaging, for instance, has been extensively used in diagnosing lung infections during the COVID-19 pandemic\cite{LIU2020244,9446143,YI2019101552}. While manual segmentation by radiologists is accurate, it remains labor-intensive, time-consuming, and costly, driving demand for automated methods using deep learning\cite{TAJBAKHSH2020101693}. These computational approaches address efficiency challenges while maintaining the diagnostic value that makes medical imaging indispensable in contemporary healthcare systems.
 
 \subsection{Current Challenges: Data Scarcity and Its Implications}
 Medical image segmentation has witnessed tremendous progress with deep learning, yet its success remains heavily dependent on the availability of large-scale, high-quality annotated datasets. Unfortunately, several persistent challenges hinder the widespread deployment of AI models in medical imaging, especially in real-world clinical environments.
@@ -56,7 +52,7 @@ Obtaining labeled medical imaging data is a labor-intensive and costly process, 
 Even when labeled datasets are available, they are often limited in diversity, both demographically and technically (e.g., variation in scanner models or acquisition protocols). This lack of heterogeneity leads to significant distribution shift problems when models trained on one dataset are deployed on another, ultimately affecting their generalization performance across populations and institutions​.
 
 \subsubsection{Resource Constraints}\
-Healthcare systems in low- and middle-income regions face acute shortages in data collection infrastructure and medical imaging resources. The high costs of annotation and hardware requirements for data processing place an additional burden on AI development in such contexts. As noted in the literature, while deep learning architectures like U-Nets are widely adopted in academic research, deploying them in under-resourced settings remains a formidable challenge​.
+Healthcare systems in low- and middle-income regions face acute shortages in data collection infrastructure and medical imaging resources. The high costs of annotation and hardware requirements for data processing place an additional burden on AI development in such contexts. While deep learning architectures like U-Nets are widely adopted in academic research, deploying them in under-resourced settings remains a formidable challenge​.
 
 \subsection{The Case for AI/ML Technologies}
 This subsection makes the case for adopting machine learning and artificial intelligence technologies to address the challenges and improve outcomes in the application domain.
@@ -85,12 +81,7 @@ Self-supervised learning (SSL) enables the use of large amounts of unlabeled dat
 
 Chen et al. (2019)\cite{chenSelfsupervisedLearningMedical2019} proposed a context restoration strategy tailored to the characteristics of medical images. The method corrupts the spatial arrangement of an image by swapping randomly selected patches and then trains a convolutional neural network (CNN) to restore the original image. This process forces the network to learn semantic-level image representations, which are transferable to downstream tasks such as classification, localization, and segmentation​.
 
-\subsubsection{Key Features of Context Restoration SSL}
-\begin{itemize}
-    \item \textbf{Semantic Feature Learning:} The network learns to recognize and correct structural inconsistencies, resulting in rich semantic representations.
-    \item \textbf{Transferability:} Features learned through this method can initialize both encoder and decoder parts of downstream CNNs, especially useful for segmentation tasks where full image-to-image mapping is needed​.
-    \item \textbf{Simplicity:} The approach is simple to implement, with minimal changes to existing architectures and training pipelines.
-\end{itemize}
+Context restoration SSL offers key advantages in medical imaging applications. The method encourages networks to learn semantic representations by correcting structural inconsistencies. The learned features can effectively initialize both encoder and decoder components of downstream CNNs, which is particularly valuable for segmentation tasks requiring image-to-image mapping. This approach is also implementation-friendly, requiring minimal modifications to existing architectures and training pipelines, facilitating adoption in contexts where annotated data is scarce.
 
 \subsubsection{Methodology}
 Let $\mathcal{X} = \{x_1, x_2, \ldots, x_N\}$ be a set of unlabeled medical images. A corruption function $\mathcal{R}$ generates a disordered image $\tilde{x}_i$:
@@ -154,12 +145,12 @@ The CNN model $g(\cdot)$ has two parts, as shown in Figure \ref{fig:context_rest
     \item \textbf{Segmentation:} In brain tumor segmentation using multi-modal MRI, models with context restoration pretraining achieved higher Dice scores and lower Hausdorff distances than all other SSL and baseline methods​.
 \end{itemize}
 
-\subsubsection{Benefits}
-\begin{itemize}
-    \item Reduces dependence on labeled data by leveraging vast pools of unlabeled medical images.
-    \item Improves model performance under limited supervision conditions, particularly in small-sample settings.
-    \item Generalizes well across modalities (ultrasound, CT, MRI) and tasks (classification, localization, segmentation).
-\end{itemize}
+% \subsubsection{Benefits}
+% \begin{itemize}
+%     \item Reduces dependence on labeled data by leveraging vast pools of unlabeled medical images.
+%     \item Improves model performance under limited supervision conditions, particularly in small-sample settings.
+%     \item Generalizes well across modalities (ultrasound, CT, MRI) and tasks (classification, localization, segmentation).
+% \end{itemize}
 
 \subsection{Reinforcement Learning (RL)}
 
@@ -167,7 +158,7 @@ Reinforcement Learning (RL) is a powerful machine learning paradigm in which an 
 
 An RL framework is typically defined by a set of core components: \textbf{state} (the environment observation), \textbf{action} (possible moves the agent can make), \textbf{reward} (feedback signal guiding learning), and \textbf{policy} (the decision-making strategy). Depending on whether the environment is explicitly modeled, RL approaches are broadly categorized into \textit{model-free} and \textit{model-based} methods. Model-free methods, such as DQN\cite{mnihHumanlevelControlDeep2015a} and A2C\cite{Schulman2017ProximalPO,Mnih2016AsynchronousMF}, learn policies directly through interaction, while model-based approaches attempt to learn a transition model to improve sample efficiency—particularly important in low-data regimes.
 
-\subsubsection{Mathematical Formulation of Reinforcement Learning}
+\subsubsection{Methodology}
 
 Reinforcement learning problems are often modeled as a Markov Decision Process (MDP), defined by a tuple $\langle \mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma \rangle$, where:
 \begin{itemize}
@@ -197,12 +188,11 @@ An optimal policy $\pi^*$ satisfies:
 \[
 Q^{\pi^*}(s, a) = \max_{\pi} Q^{\pi}(s, a)
 \]
+This formulation enables reinforcement learning agents to develop optimal decision-making strategies through experiential learning, significantly reducing dependence on labeled datasets. Such capability addresses a critical need in medical imaging applications like classification, registration, and synthesis, where annotated data remains scarce.
 
-This formulation allows reinforcement learning agents to learn optimal decision-making strategies through trial-and-error, without requiring large-scale labeled data. This is especially beneficial in medical imaging applications such as classification, registration, or synthesis, where annotated datasets are scarce.
+Algorithm \ref{alg:rl_procedure} provides a concise framework for training RL agents. Starting with randomly initialized policy parameters, the process involves iterative updates based on environmental interactions. During each iteration, the agent selects actions according to its current policy, observes outcomes, and refines its parameters based on received feedback. This process continues until convergence to an optimal or near-optimal solution.
 
-The generic reinforcement learning procedure outlined in Algorithm \ref{alg:rl_procedure} provides a high-level framework for training RL agents. It begins with initializing the policy parameters and iteratively updates them based on the agent's interactions with the environment. At each step, the agent selects an action according to its current policy, observes the resulting reward and next state, and updates the policy parameters to improve performance. This iterative process continues until the policy converges to an optimal or near-optimal solution.
-
-Algorithm \ref{alg:rl_procedure} highlights the flexibility of RL in handling diverse tasks, as it does not rely on predefined labels but instead learns directly from the environment's feedback. This makes it particularly suitable for medical imaging applications, where labeled data is often scarce or expensive to obtain.
+What distinguishes RL from traditional supervised approaches is its ability to learn directly from environmental feedback rather than predefined labels. This fundamental difference makes RL particularly valuable for medical imaging applications, where obtaining high-quality labeled data remains costly and challenging.
 
 \begin{algorithm}[H]
     \caption{Generic Reinforcement Learning Procedure}
@@ -248,12 +238,12 @@ Overall, reinforcement learning not only reduces the burden of manual annotation
 
 
 \subsection{Generative Models for Medical Image Synthesis}
-The scarcity of large, diverse, and annotated medical imaging datasets remains a significant bottleneck in developing robust AI models for clinical applications. Generative models, particularly ​​Generative Adversarial Networks (GANs)\cite{Goodfellow2014GenerativeAN}​​ and ​​diffusion models​\cite{SohlDickstein2015DeepUL}​, have emerged as powerful tools to mitigate this challenge by synthesizing high-fidelity medical images that augment limited real-world datasets \cite{koetzierGeneratingSyntheticData2024}. These models learn the underlying data distribution of training images and generate novel samples that preserve anatomical and pathological features while ensuring patient privacy.
+Data scarcity presents a significant challenge in developing robust AI systems for medical imaging. Generative models—particularly Generative Adversarial Networks (GANs)\cite{Goodfellow2014GenerativeAN} and diffusion models\cite{SohlDickstein2015DeepUL}—offer powerful solutions by synthesizing realistic medical images that can augment limited datasets\cite{koetzierGeneratingSyntheticData2024}. By learning the underlying distribution of training data, these models generate novel samples that maintain critical anatomical and pathological features while simultaneously preserving patient privacy.
 
 \subsubsection{Generative Adversarial Networks (GANs)}
-GANs consist of a ​​generator​​ (creates synthetic images) and a ​​discriminator​​ (distinguishes real from synthetic images). Through adversarial training, the generator improves realism\cite{Goodfellow2014GenerativeAN}.
+GANs consist of a generator that creates synthetic images and a discriminator that distinguishes real from synthetic samples. Through adversarial training, these components compete, gradually improving the generator's ability to produce realistic images\cite{Goodfellow2014GenerativeAN}.
 
-For example, Upadhyay et al. (2024)\cite{wangGenerationSyntheticGround2022} proposed a GAN-based framework to generate synthetic lung lesions mimicking ground glass nodules (GGNs), addressing the data scarcity issue in computer-aided diagnosis systems. The model consists of a generator and a discriminator trained adversarially to produce realistic synthetic GGNs.
+Upadhyay et al. (2024)\cite{wangGenerationSyntheticGround2022} developed a GAN-based framework specifically for generating synthetic lung lesions resembling ground glass nodules (GGNs). This approach directly addresses data scarcity in computer-aided diagnosis systems by creating realistic synthetic nodules for training and evaluation purposes.
 
 The generator employs a U-Net-like architecture to synthesize GGNs\cite{8099502}, while the discriminator uses convolutional layers\cite{He2015DeepRL} to distinguish real from synthetic images. The loss function combines adversarial loss with pixel-wise reconstruction loss to ensure both realism and anatomical accuracy.
 
@@ -267,7 +257,7 @@ The model consists of three key components:
 \begin{figure*}[htb]
     \centering
     \includegraphics[width=0.98\linewidth]{images/GAN_model.pdf}
-    \caption{A schematic overview of a diffusion model in training and sampling settings. In the top row, the diffusion model is trained and creates a Markov chain to add Gaussian noise to the real images, resulting in a noise vector z’. The model then reverses the Markov chain by predicting the next state of the image from the current noisy state, which is equivalent to denoising the image. During sampling (bottom row), the model can generate synthetic images by starting from a random noise vector and applying the reverse Markov chain.}
+    \caption{Model training pipeline. The generator synthesizes ground glass nodules on the input background image. Two parallel discriminators then evaluate realism: the ROI discriminator (red path) focuses only on the nodule region, while the whole image discriminator (blue path) assesses the complete image context}
     \label{fig:gan_architecture}
 \end{figure*}
 
@@ -325,7 +315,7 @@ The result of the GAN training is a generator capable of producing synthetic GGN
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.98\linewidth]{images/gan_result.pdf}
-    \caption{Examples of synthetic ground glass nodules (GGNs), the GGNs were categorised by physicians to four categories: confidently fake, leaning fake, leaning real, and confidently real. a Synthetic GGNs classified as “real” by clinicians. b Synthetic GGNs with less convincing generated lesions (classified as “leaning fake”). c A real GGNs in the original LIDC-IDRI dataset}
+    \caption{Examples of synthetic ground glass nodules (GGNs) evaluated by physicians on a four-point authenticity scale. (a) High-quality synthetic GGNs classified as "confidently real" by clinicians. (b) Lower-quality synthetic GGNs classified as "leaning fake." (c) Actual GGNs from the original LIDC-IDRI dataset for comparison.}
     \label{fig:gan_results}
 \end{figure}
 
@@ -367,11 +357,11 @@ The variational Markov chain in the reverse direction is parameterized as:
 p_\theta(x_{t-1}|x_t) = \mathcal{N}\left(x_{t-1}; \frac{1}{\sqrt{1-\beta_t}}(x_t + \beta_t s_\theta(x_t,t)), \beta_t\mathbf{I}\right)
 \end{equation}
 
-The model is trained with a re-weighted ELBO variant:
+% The model is trained with a re-weighted ELBO variant:
 
-\begin{equation}
-\theta^* = \arg\min_\theta \sum_{t=1}^N (1-\alpha_t) \mathbb{E}_{p_{data}(x)}\mathbb{E}_{q_t(\tilde{x}|x)} \| s_\theta(\tilde{x},t) - \nabla_x \log q_t(\tilde{x}|x) \|_2^2
-\end{equation}
+% \begin{equation}
+% \theta^* = \arg\min_\theta \sum_{t=1}^N (1-\alpha_t) \mathbb{E}_{p_{data}(x)}\mathbb{E}_{q_t(\tilde{x}|x)} \| s_\theta(\tilde{x},t) - \nabla_x \log q_t(\tilde{x}|x) \|_2^2
+% \end{equation}
 
 After obtaining the optimal model $s_\theta^*$, samples's generation is as shown in Algorithm \ref{alg:ddpm_sampling}. 
 
@@ -405,9 +395,9 @@ The integration of AI into medical imaging has yielded impressive results, but a
 
 
 \subsection{Data Privacy and Security}
-The collection and use of medical imaging data raise significant privacy concerns due to the personal nature of health information. Patient data is strictly protected by various regulations such as HIPAA in the United States, GDPR in Europe, and similar frameworks globally. These regulations impose strict requirements on data sharing and access, which can significantly impede the development of robust AI models \cite{koetzierGeneratingSyntheticData2024}.
+Medical imaging data contains sensitive personal health information protected by regulations like HIPAA (US) and GDPR (Europe), which restrict data sharing and access. These constraints significantly impede AI model development in healthcare \cite{koetzierGeneratingSyntheticData2024}.
 
-Synthetic data generation techniques, as discussed in Section \ref{sec:ml_technologies}, offer a promising solution to these privacy challenges. By creating artificial medical images that preserve the statistical properties and clinical relevance of real images without containing actual patient information, these approaches can effectively circumvent many privacy concerns:
+Synthetic data generation techniques, as discussed in Section \ref{sec:ml_technologies}, offer an elegant solution to these privacy challenges. By creating artificial medical images that maintain the statistical properties and clinical relevance of real data without containing actual patient information, these approaches effectively address privacy concerns:
 
 \begin{itemize}
     \item \textbf{Risk Mitigation}: Synthetic data eliminates the risk of exposing protected health information (PHI), as the generated images do not correspond to real patients. This significantly reduces the regulatory burden and potential legal liability associated with data breaches.
@@ -448,7 +438,7 @@ To mitigate these risks, synthetic data generation should be specifically design
 
 
 \subsection{Transparency and Explainability}
-The "black-box" nature of many advanced AI systems used in medical imaging poses significant challenges for clinical adoption and regulatory approval. Complex models like deep generative networks and self-supervised learning approaches often lack transparency in their decision-making processes, making it difficult for healthcare professionals to understand and trust their outputs\cite{vermaRoleDeepLearning2023}.
+The complex "black-box" nature of advanced AI systems in medical imaging creates significant barriers to clinical adoption and regulatory approval. Deep generative networks and self-supervised learning approaches typically lack transparency in their internal processes, making it challenging for healthcare professionals to understand and trust their outputs\cite{vermaRoleDeepLearning2023}.
 
 In medical contexts, where decisions directly impact patient outcomes, this lack of explainability is particularly problematic:
 
@@ -474,12 +464,6 @@ To address these challenges, several approaches are being developed to enhance t
 
 \subsection{Accountability and Governance}
 In medical imaging, where AI impacts patient care, robust accountability and governance frameworks are critical. The discussed AI approaches—generative models, self-supervised learning, and reinforcement learning—pose unique challenges, especially in data-scarce contexts.
-
-\begin{itemize}
-    \item \textbf{Clinical Validation}: AI systems using limited or synthetic data must undergo rigorous testing across diverse populations with clear performance metrics and post-deployment monitoring.
-    \item \textbf{Responsibility Assignment}: Clear accountability frameworks are needed to define responsibility for errors, especially with models trained on synthetic or limited data.
-    \item \textbf{Regulatory Oversight}: Evolving frameworks, like those from the FDA, must address challenges specific to data-scarce and generative AI systems.
-\end{itemize}
 
 Governance of synthetic data requires attention to:
 
