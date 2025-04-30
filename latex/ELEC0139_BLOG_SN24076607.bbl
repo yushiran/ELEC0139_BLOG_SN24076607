@@ -1,8 +1,194 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
-\bibitem{C2}
-C.D. Jones, A.B. Smith, and E.F. Roberts,
-\newblock ``Article title,''
-\newblock in {\em Proceedings Title}. IEEE, 2003, vol.~II, pp. 803--806.
+\bibitem{upadhyayAdvancesDeepLearning2024}
+Ashwini~Kumar Upadhyay and Ashish~Kumar Bhandari,
+\newblock ``Advances in {{Deep Learning Models}} for {{Resolving Medical Image
+  Segmentation Data Scarcity Problem}}: {{A Topical Review}},''
+\newblock {\em Archives of Computational Methods in Engineering}, vol. 31, no.
+  3, pp. 1701--1719, Apr. 2024.
+
+\bibitem{sushankiReviewComputationalMethods2024}
+Sushi Sushanki, Ashish~Kumar Bhandari, and Amit~Kumar Singh,
+\newblock ``A {{Review}} on {{Computational Methods}} for {{Breast Cancer
+  Detection}} in {{Ultrasound Images Using Multi-Image Modalities}},''
+\newblock {\em Archives of Computational Methods in Engineering}, vol. 31, no.
+  3, pp. 1277--1296, Apr. 2024.
+
+\bibitem{LIU2020244}
+Liangliang Liu, Jianhong Cheng, Quan Quan, Fang-Xiang Wu, Yu-Ping Wang, and
+  Jianxin Wang,
+\newblock ``A survey on {{U-shaped}} networks in medical image segmentations,''
+\newblock {\em Neurocomputing}, vol. 409, pp. 244--258, 2020.
+
+\bibitem{9446143}
+Nahian Siddique, Sidike Paheding, Colin~P. Elkin, and Vijay Devabhaktuni,
+\newblock ``U-net and its variants for medical image segmentation: A review of
+  theory and applications,''
+\newblock {\em IEEE Access}, vol. 9, pp. 82031--82057, 2021.
+
+\bibitem{YI2019101552}
+Xin Yi, Ekta Walia, and Paul Babyn,
+\newblock ``Generative adversarial network in medical imaging: {{A}} review,''
+\newblock {\em Medical Image Analysis}, vol. 58, pp. 101552, 2019.
+
+\bibitem{kumarTripleClippedHistogramBased2021}
+Sonu Kumar, Ashish~Kumar Bhandari, Aditya Raj, and Kirti Swaraj,
+\newblock ``Triple {{Clipped Histogram-Based Medical Image Enhancement Using
+  Spatial Frequency}},''
+\newblock {\em IEEE transactions on nanobioscience}, vol. 20, no. 3, pp.
+  278--286, July 2021.
+
+\bibitem{TAJBAKHSH2020101693}
+Nima Tajbakhsh, Laura Jeyaseelan, Qian Li, Jeffrey~N. Chiang, Zhihao Wu, and
+  Xiaowei Ding,
+\newblock ``Embracing imperfect datasets: {{A}} review of deep learning
+  solutions for medical image segmentation,''
+\newblock {\em Medical Image Analysis}, vol. 63, pp. 101693, 2020.
+
+\bibitem{vermaRoleDeepLearning2023}
+Poonam~Rani Verma and Ashish~Kumar Bhandari,
+\newblock ``Role of {{Deep Learning}} in {{Classification}} of {{Brain MRI
+  Images}} for {{Prediction}} of {{Disorders}}: {{A Survey}} of {{Emerging
+  Trends}},''
+\newblock {\em Archives of Computational Methods in Engineering}, vol. 30, no.
+  8, pp. 4931--4957, Nov. 2023.
+
+\bibitem{zhouUNetNestedUNet2018}
+Zongwei Zhou, Md~Mahfuzur Rahman~Siddiquee, Nima Tajbakhsh, and Jianming Liang,
+\newblock ``{{UNet}}++: {{A Nested U-Net Architecture}} for {{Medical Image
+  Segmentation}},''
+\newblock in {\em Deep {{Learning}} in {{Medical Image Analysis}} and
+  {{Multimodal Learning}} for {{Clinical Decision Support}}}, Danail Stoyanov,
+  Zeike Taylor, Gustavo Carneiro, Tanveer {Syeda-Mahmood}, Anne Martel, Lena
+  {Maier-Hein}, Jo{\~a}o Manuel~R.S. Tavares, Andrew Bradley, Jo{\~a}o~Paulo
+  Papa, Vasileios Belagiannis, Jacinto~C. Nascimento, Zhi Lu, Sailesh Conjeti,
+  Mehdi Moradi, Hayit Greenspan, and Anant Madabhushi, Eds., Cham, 2018, pp.
+  3--11, Springer International Publishing.
+
+\bibitem{9324763}
+Andrew Gilbert, Maciej Marciniak, Cristobal Rodero, Pablo Lamata, Eigil Samset,
+  and Kristin Mcleod,
+\newblock ``Generating synthetic labeled data from existing anatomical models:
+  An example with echocardiography segmentation,''
+\newblock {\em IEEE Transactions on Medical Imaging}, vol. 40, no. 10, pp.
+  2783--2794, 2021.
+
+\bibitem{shinMedicalImageSynthesis2018}
+Hoo-Chang Shin, Neil~A. Tenenholtz, Jameson~K. Rogers, Christopher~G. Schwarz,
+  Matthew~L. Senjem, Jeffrey~L. Gunter, Katherine~P. Andriole, and Mark
+  Michalski,
+\newblock ``Medical {{Image Synthesis}} for {{Data Augmentation}} and
+  {{Anonymization Using Generative Adversarial Networks}},''
+\newblock in {\em Simulation and {{Synthesis}} in {{Medical Imaging}}}, Ali
+  Gooya, Orcun Goksel, Ipek Oguz, and Ninon Burgos, Eds., Cham, 2018, pp.
+  1--11, Springer International Publishing.
+
+\bibitem{CHAITANYA2021101934}
+Krishna Chaitanya, Neerav Karani, Christian~F. Baumgartner, Ertunc Erdil, Anton
+  Becker, Olivio Donati, and Ender Konukoglu,
+\newblock ``Semi-supervised task-driven data augmentation for medical image
+  segmentation,''
+\newblock {\em Medical Image Analysis}, vol. 68, pp. 101934, 2021.
+
+\bibitem{zhengHierarchicalSelfsupervisedLearning2021}
+Hao Zheng, Jun Han, Hongxiao Wang, Lin Yang, Zhuo Zhao, Chaoli Wang, and
+  Danny~Z. Chen,
+\newblock ``Hierarchical {{Self-supervised Learning}} for {{Medical Image
+  Segmentation Based}} on {{Multi-domain Data Aggregation}},''
+\newblock in {\em Medical {{Image Computing}} and {{Computer Assisted
+  Intervention}} -- {{MICCAI}} 2021}, Marleen {de Bruijne}, Philippe~C. Cattin,
+  St{\'e}phane Cotin, Nicolas Padoy, Stefanie Speidel, Yefeng Zheng, and
+  Caroline Essert, Eds., Cham, 2021, pp. 622--632, Springer International
+  Publishing.
+
+\bibitem{chenSelfsupervisedLearningMedical2019}
+Liang Chen, Paul Bentley, Kensaku Mori, Kazunari Misawa, Michitaka Fujiwara,
+  and Daniel Rueckert,
+\newblock ``Self-supervised learning for medical image analysis using image
+  context restoration,''
+\newblock {\em Medical Image Analysis}, vol. 58, pp. 101539, Dec. 2019.
+
+\bibitem{He2015DeepRL}
+Kaiming He, X.~Zhang, Shaoqing Ren, and Jian Sun,
+\newblock ``Deep residual learning for image recognition,''
+\newblock {\em 2016 IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, pp. 770--778, 2015.
+
+\bibitem{Szegedy2015RethinkingTI}
+Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, and
+  Zbigniew Wojna,
+\newblock ``Rethinking the inception architecture for computer vision,''
+\newblock {\em 2016 IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, pp. 2818--2826, 2015.
+
+\bibitem{huReinforcementLearningMedical2023}
+Mingzhe Hu, Jiahan Zhang, Luke Matkovic, Tian Liu, and Xiaofeng Yang,
+\newblock ``Reinforcement learning in medical image analysis: {{Concepts}},
+  applications, challenges, and future directions,''
+\newblock {\em Journal of Applied Clinical Medical Physics}, vol. 24, no. 2,
+  pp. e13898, 2023.
+
+\bibitem{mnihHumanlevelControlDeep2015a}
+Volodymyr Mnih, Koray Kavukcuoglu, David Silver, Andrei~A. Rusu, Joel Veness,
+  Marc~G. Bellemare, Alex Graves, Martin Riedmiller, Andreas~K. Fidjeland,
+  Georg Ostrovski, Stig Petersen, Charles Beattie, Amir Sadik, Ioannis
+  Antonoglou, Helen King, Dharshan Kumaran, Daan Wierstra, Shane Legg, and
+  Demis Hassabis,
+\newblock ``Human-level control through deep reinforcement learning,''
+\newblock {\em Nature}, vol. 518, no. 7540, pp. 529--533, Feb. 2015.
+
+\bibitem{Schulman2017ProximalPO}
+John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov,
+\newblock ``Proximal policy optimization algorithms,''
+\newblock {\em ArXiv}, vol. abs/1707.06347, 2017.
+
+\bibitem{Mnih2016AsynchronousMF}
+Volodymyr Mnih, Adri{\`a}~Puigdom{\`e}nech Badia, Mehdi Mirza, Alex Graves,
+  Timothy~P. Lillicrap, Tim Harley, David Silver, and Koray Kavukcuoglu,
+\newblock ``Asynchronous methods for deep reinforcement learning,''
+\newblock in {\em International Conference on Machine Learning}, 2016.
+
+\bibitem{Goodfellow2014GenerativeAN}
+Ian~J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David
+  Warde-Farley, Sherjil Ozair, Aaron~C. Courville, and Yoshua Bengio,
+\newblock ``Generative adversarial nets,''
+\newblock in {\em Neural Information Processing Systems}, 2014.
+
+\bibitem{SohlDickstein2015DeepUL}
+Jascha~Narain Sohl-Dickstein, Eric~A. Weiss, Niru Maheswaranathan, and Surya
+  Ganguli,
+\newblock ``Deep unsupervised learning using nonequilibrium thermodynamics,''
+\newblock {\em ArXiv}, vol. abs/1503.03585, 2015.
+
+\bibitem{koetzierGeneratingSyntheticData2024}
+Lennart~R. Koetzier, Jie Wu, Domenico Mastrodicasa, Aline Lutz, Matthew Chung,
+  W.~Adam Koszek, Jayanth Pratap, Akshay~S. Chaudhari, Pranav Rajpurkar,
+  Matthew~P. Lungren, and Martin~J. Willemink,
+\newblock ``Generating {{Synthetic Data}} for {{Medical Imaging}},''
+\newblock {\em Radiology}, vol. 312, no. 3, pp. e232471, Sept. 2024.
+
+\bibitem{wangGenerationSyntheticGround2022}
+Zhixiang Wang, Zhen Zhang, Ying Feng, Lizza E.~L. Hendriks, Razvan~L. Miclea,
+  Hester Gietema, Janna Schoenmaekers, Andre Dekker, Leonard Wee, and Alberto
+  Traverso,
+\newblock ``Generation of synthetic ground glass nodules using generative
+  adversarial networks ({{GANs}}),''
+\newblock {\em European Radiology Experimental}, vol. 6, no. 1, pp. 59, Nov.
+  2022.
+
+\bibitem{8099502}
+Christian Ledig, Lucas Theis, Ferenc Huszár, Jose Caballero, Andrew
+  Cunningham, Alejandro Acosta, Andrew Aitken, Alykhan Tejani, Johannes Totz,
+  Zehan Wang, and Wenzhe Shi,
+\newblock ``Photo-realistic single image super-resolution using a generative
+  adversarial network,''
+\newblock in {\em 2017 IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, 2017, pp. 105--114.
+
+\bibitem{songScoreBasedGenerativeModeling2021}
+Yang Song, Jascha {Sohl-Dickstein}, Diederik~P. Kingma, Abhishek Kumar, Stefano
+  Ermon, and Ben Poole,
+\newblock ``Score-{{Based Generative Modeling}} through {{Stochastic
+  Differential Equations}},'' Feb. 2021.
 
 \end{thebibliography}

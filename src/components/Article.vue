@@ -6,7 +6,7 @@
         <div class="article-content">
             <article-section id="niivue-demo" title="NiiVue Demo">
                 <p>
-                    Below is an interactive demo of NiiVue, showcasing its ability to visualize medical imaging data.
+                     interactive demo of NiiVue, showcasing its ability to visualize medical imaging data.
                 </p>
                 <div class="niivue-container">
                     <canvas id="niivue-canvas" style="width: 100%; height: 600px;"></canvas>
