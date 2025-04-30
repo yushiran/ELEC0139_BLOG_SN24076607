@@ -3,9 +3,9 @@
     <div class="footer-content">
       <p class="copyright">&copy; {{ new Date().getFullYear() }} - SN24076677</p>
       <div class="footer-links">
-        <a href="#" class="link">References</a>
+        <!-- <a href="#" class="link">References</a>
         <a href="#" class="link">Contact</a>
-        <a href="#" class="link">Privacy Policy</a>
+        <a href="#" class="link">Privacy Policy</a> -->
       </div>
     </div>
     <p class="disclaimer">This article is for educational purposes only and does not constitute medical advice.</p>

@@ -14,8 +14,12 @@
     "@hsorby/vue3-katex": "^0.6.0-rc.7",
     "@niivue/niivue": "^0.56.0",
     "bibtex-parse-js": "^0.0.24",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
     "crypto-browserify": "^3.12.1",
+    "express": "^5.1.0",
     "katex": "^0.16.22",
+    "openai": "^4.96.2",
     "pdfjs-dist": "^5.2.133",
     "vue": "^3.5.13"
   },

@@ -3,11 +3,32 @@
         <div class="nav-content">
             <div class="logo">MedAI Blog</div>
             <ul class="nav-links">
-                <li><a href="#introduction" class="nav-link">Introduction</a></li>
-                <li><a href="#data-scarcity" class="nav-link">Data Challenges</a></li>
-                <li><a href="#privacy-concerns" class="nav-link">Privacy</a></li>
-                <li><a href="#ml-technologies" class="nav-link">Technologies</a></li>
-                <li><a href="#ethical-issues" class="nav-link">Ethics</a></li>
+                <li>
+                    <a href="#application-domain" class="nav-link main-link">Application Domain & Challenges</a>
+                    <ul class="sub-nav">
+                        <li><a href="#application-domin-medical-imaging" class="nav-link sub-link">Medical Imaging Domain</a></li>
+                        <li><a href="#challenges-in-medical-imaging" class="nav-link sub-link">Data Scarcity & Implications</a></li>
+                        <li><a href="#the-case-for-technologies" class="nav-link sub-link">Case for AI/ML Technologies</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#solutions-to-data-scarcity-in-medical-imaging" class="nav-link main-link">Solutions to Data Scarcity</a>
+                    <ul class="sub-nav">
+                        <li><a href="#self-supervised-learning" class="nav-link sub-link">Self-Supervised Learning</a></li>
+                        <li><a href="#reinforcement-learning" class="nav-link sub-link">Reinforcement Learning</a></li>
+                        <li><a href="#generative-models" class="nav-link sub-link">Generative Models</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#ethical-considerations" class="nav-link main-link">Ethical Considerations</a>
+                    <ul class="sub-nav">
+                        <li><a href="#data-privacy-and-security" class="nav-link sub-link">Data Privacy & Security</a></li>
+                        <li><a href="#bias-and-fairness" class="nav-link sub-link">Bias & Fairness</a></li>
+                        <li><a href="#transparency-and-explainability" class="nav-link sub-link">Transparency & Explainability</a></li>
+                        <li><a href="#accountability-and-governance" class="nav-link sub-link">Accountability & Governance</a></li>
+                    </ul>
+                </li>
+                <li><a href="#conclusion" class="nav-link main-link">Conclusion</a></li>
             </ul>
         </div>
     </nav>
@@ -16,14 +37,15 @@
 <script setup>
 // Navigation component
 </script>
+
 <style scoped>
 .vertical-navigation {
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
-  width: 15%; /* 使用百分比宽度，确保与内容区域协调 */
-  max-width: 200px; /* 限制最大宽度 */
+  width: 18%; /* 稍微增加宽度以适应层级导航 */
+  max-width: 250px; /* 增加最大宽度 */
   background-color: var(--card-background);
   box-shadow: 2px 0 10px var(--shadow-color);
   padding: 1rem;
@@ -53,18 +75,34 @@
 }
 
 .nav-links li {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .nav-link {
     color: var(--text-color);
     text-decoration: none;
-    font-size: 1rem;
     transition: color 0.2s, background-color 0.2s;
     display: block;
-    padding: 0.5rem 1rem;
     border-radius: 0.25rem;
-    /* 使用相对单位代替4px */
+}
+
+.main-link {
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.sub-nav {
+    list-style: none;
+    padding-left: 1rem;
+    margin: 0.5rem 0 0.75rem 0;
+}
+
+.sub-link {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
 .nav-link:hover {
@@ -74,17 +112,15 @@
 
 @media (max-width: 768px) {
     .vertical-navigation {
-    position: static;
-    width: 100%;
-    max-width: none;
-    height: auto;
-  }
+        position: static;
+        width: 100%;
+        max-width: none;
+        height: auto;
+    }
 
     .nav-content {
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
     }
 
     .logo {
@@ -92,13 +128,11 @@
     }
 
     .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        width: 100%;
     }
 
-    .nav-links li {
-        margin: 0 0.5rem 0.5rem 0;
+    .sub-nav {
+        display: none; /* 在移动视图中隐藏子导航 */
     }
 }
 </style>

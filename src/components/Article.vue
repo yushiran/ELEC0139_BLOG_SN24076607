@@ -1,7 +1,7 @@
 <template>
     <div class="article-container">
         <article-header title="Bridging the Data Gap: Leveraging AI to Address Data Scarcity in Medical Imaging"
-            subtitle="Github Respositoties Url:https://github.com/yushiran/ELEC0139_BLOG_SN24076607"
+            subtitle="Github Respositoties :https://github.com/yushiran/ELEC0139_BLOG_SN24076607"
             author="SN: 24076607" />
 
         <div class="article-content">
@@ -27,6 +27,12 @@
                         efficiency challenges while maintaining the diagnostic value that makes medical imaging
                         indispensable in contemporary healthcare systems.
                     </p>
+                    <div class="niivue-container">
+                        <canvas id="niivue-canvas" style="width: 50%; height: 300px;"></canvas>
+                    </div>
+
+                    <p class="image-caption">MNI152 brain MRI image. Click and drag to rotate; scroll to zoom.</p>
+
                 </sub-section>
                 <sub-section id="challenges-in-medical-imaging"
                     title="Current Challenges: Data Scarcity and Its Implications">
@@ -43,7 +49,8 @@
                             such as pixel-wise segmentation, is especially time-consuming. As a result, the availability
                             of large annotated datasets remains limited​. Moreover, privacy regulations and patient
                             confidentiality further restrict data sharing and public
-                            availability​<Reference citationKey="TAJBAKHSH2020101693" />.
+                            availability​
+                            <Reference citationKey="TAJBAKHSH2020101693" />.
                         </p>
                     </sub-sub-section>
                     <sub-sub-section id="bias-and-generalizability-issues" title="Bias and Generalizability Issues">
@@ -76,9 +83,11 @@
                             meaningful spatial and semantic patterns even from limited labeled data. When designed
                             appropriately, such models can achieve strong segmentation performance despite inherent
                             challenges like noise and distribution shift​
-                            <Reference citationKey="vermaRoleDeepLearning2023" />. Moreover, hybrid architectures such as U-Net++ and
+                            <Reference citationKey="vermaRoleDeepLearning2023" />. Moreover, hybrid architectures such
+                            as U-Net++ and
                             attention mechanisms have further improved efficiency and robustness​
-                            <Reference citationKey="zhouUNetNestedUNet2018" />. </p>
+                            <Reference citationKey="zhouUNetNestedUNet2018" />.
+                        </p>
                     </sub-sub-section>
                     <sub-sub-section id="synthetic-data-generation" title="Synthetic Data Generation">
                         <p>
@@ -87,9 +96,27 @@
                             Cycle-GANs and conditional GANs have been used to generate high-fidelity synthetic MRI and
                             ultrasound images that closely resemble real samples, including segmentation labels. These
                             synthetic datasets, when used in model training, have shown comparable performance to real
-                            data<Reference citationKey="9324763" /><Reference citationKey="shinMedicalImageSynthesis2018" />​.
+                            data
+                            <Reference citationKey="9324763" />
+                            <Reference citationKey="shinMedicalImageSynthesis2018" />​.
 
                         </p>
+                        <div class="video-container">
+                            <iframe 
+                                width="70%" 
+                                height="auto" 
+                                style="aspect-ratio: 16/9;" 
+                                src="https://www.youtube.com/embed/YHTSdd8-bnc?si=P-RpcNtfG3P1h1bj" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <!-- <p class="video-caption">CycleGAN for MRI image synthesis. The model learns to translate between
+                            different MRI modalities, generating realistic images that can be used for training and
+                            evaluation.</p> -->
                     </sub-sub-section>
                     <sub-sub-section id="self-supervised-learning" title="Self-Supervised Learning">
                         <p>
@@ -97,7 +124,8 @@
                             ability to leverage vast amounts of unlabeled data. Techniques such as context restoration,
                             multi-modal feature fusion, and attention-based pseudo labeling enable models to learn
                             robust representations without requiring ground-truth masks​
-                            <Reference citationKey="CHAITANYA2021101934" /><Reference citationKey="zhengHierarchicalSelfsupervisedLearning2021" />.
+                            <Reference citationKey="CHAITANYA2021101934" />
+                            <Reference citationKey="zhengHierarchicalSelfsupervisedLearning2021" />.
                         </p>
                     </sub-sub-section>
                 </sub-section>
@@ -113,7 +141,8 @@
                         itself. In medical imaging, this is particularly valuable, as obtaining labeled data is
                         expensive and requires expert input​.
 
-                        Chen et al. (2019)<Reference citationKey="chenSelfsupervisedLearningMedical2019" /> proposed a context restoration
+                        Chen et al. (2019)
+                        <Reference citationKey="chenSelfsupervisedLearningMedical2019" /> proposed a context restoration
                         strategy tailored to the characteristics of medical images. The method corrupts the spatial
                         arrangement of an image by swapping randomly selected patches and then trains a convolutional
                         neural network (CNN) to restore the original image. This process forces the network to learn
@@ -130,39 +159,67 @@
                     </p>
                     <sub-sub-section id="methodology" title="Methodology">
                         <p>
-                            Let <KatexInline formula="\mathcal{X} = \{x_1, x_2, \ldots, x_N\}" /> be a set of unlabeled medical images. A
-                            corruption function <KatexInline formula="\mathcal{R}" /> generates a disordered image <KatexInline formula="\tilde{x}_i" />:
+                            Let
+                            <KatexInline formula="\mathcal{X} = \{x_1, x_2, \ldots, x_N\}" /> be a set of unlabeled
+                            medical images. A
+                            corruption function
+                            <KatexInline formula="\mathcal{R}" /> generates a disordered image
+                            <KatexInline formula="\tilde{x}_i" />:
                             <KatexDisplay formula="\tilde{x}_i = \mathcal{R}(x_i)" />
-                            A CNN model <KatexInline formula="g(\cdot)" /> has two parts:
+                            A CNN model
+                            <KatexInline formula="g(\cdot)" /> has two parts:
                             <KatexDisplay formula="x_i = g(\tilde{x}_i) \approx f^{-1}(\tilde{x}_i)" />
                             The training objective is to minimize the pixel-wise L2 reconstruction loss:
-                            <KatexDisplay formula="\mathcal{L}_{\text{SSL}} = \left\| x_i - g(\tilde{x}_i) \right\|_2^2" />
+                            <KatexDisplay
+                                formula="\mathcal{L}_{\text{SSL}} = \left\| x_i - g(\tilde{x}_i) \right\|_2^2" />
                         </p>
 
                         <p>
-                            The corruption function <KatexInline formula="\mathcal{R}" /> randomly selects and swaps image patches:
+                            The corruption function
+                            <KatexInline formula="\mathcal{R}" /> randomly selects and swaps image patches:
                         </p>
 
-                        <div>
-                            <p><strong>Algorithm: Image Context Disordering</strong></p>
-                            <p><strong>Input:</strong> original image <KatexInline formula="x_i" /></p>
-                            <p><strong>Output:</strong> image with disordered context <KatexInline formula="\tilde{x}_i" /></p>
-                            <ol>
-                                <li>FOR <KatexInline formula="t = 1" /> to <KatexInline formula="T" /></li>
-                                <li>&nbsp;&nbsp;randomly select patch <KatexInline formula="p_1 \in x_i" /></li>
-                                <li>&nbsp;&nbsp;randomly select patch <KatexInline formula="p_2 \in x_i" /></li>
-                                <li>&nbsp;&nbsp;IF <KatexInline formula="p_1 \cap p_2 = \emptyset" /></li>
-                                <li>&nbsp;&nbsp;&nbsp;&nbsp;swap <KatexInline formula="p_1" /> and <KatexInline formula="p_2" /></li>
-                                <li>&nbsp;&nbsp;ENDIF</li>
-                                <li>ENDFOR</li>
-                            </ol>
+                        <div class="algorithm-container">
+                            <div class="algorithm-box">
+                                <div class="algorithm-title">Algorithm 1 Image Context Disordering</div>
+                                <div class="algorithm-content">
+                                    <div class="algorithm-line">
+                                        <span class="line-number">1:</span> <span class="algorithm-keyword">Input:</span> original image <KatexInline formula="x_i" />
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">2:</span> <span class="algorithm-keyword">Output:</span> image with disordered context <KatexInline formula="\tilde{x}_i" />
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">3:</span> <span class="algorithm-keyword">for</span> <KatexInline formula="t = 1" />  to  <KatexInline formula="T" /> <span class="algorithm-keyword">do</span>
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">4:</span> <span class="algorithm-indent"></span>randomly select patch <KatexInline formula="p_1 \in x_i" />
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">5:</span> <span class="algorithm-indent"></span>randomly select patch <KatexInline formula="p_2 \in x_i" />
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">6:</span> <span class="algorithm-indent"></span><span class="algorithm-keyword">if</span> <KatexInline formula="p_1 \cap p_2 = \emptyset" /> <span class="algorithm-keyword">then</span>
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">7:</span> <span class="algorithm-indent"></span><span class="algorithm-indent"></span>swap <KatexInline formula="p_1" /> and <KatexInline formula="p_2" />
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">8:</span> <span class="algorithm-indent"></span><span class="algorithm-keyword">end if</span>
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">9:</span> <span class="algorithm-keyword">end for</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <p>
-                            The CNN model <KatexInline formula="g(\cdot)" /> has two parts:
+                            The CNN model
+                            <KatexInline formula="g(\cdot)" /> has two parts:
                         </p>
 
-                        <div class="diagram" style="max-width: 60%; margin: 1rem auto;">
+                        <div class="diagram" style="max-width: 70%; margin: 1rem auto;">
                             <img src="../assets/General_CNN_architecture_for_the_context_restoration_self_supervised_learning.jpg"
                                 alt="General CNN architecture for context restoration SSL">
                             <p class="image-caption">General CNN architecture for context restoration SSL. Blue, green,
@@ -224,26 +281,57 @@
                         while model-based approaches attempt to learn a transition model to improve sample
                         efficiency—particularly important in low-data regimes.
                     </p>
+                    <div class="video-container">
+                        <iframe 
+                            width="70%" 
+                            height="auto" 
+                            style="aspect-ratio: 16/9;" 
+                            src="https://www.youtube.com/embed/vXtfdGphr3c?si=g_E4nt8O0P03Fxum" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p class="video-caption">Demonstration of reinforcement learning applied to medical image analysis, showing how agents learn optimal policies through environmental feedback.</p>
                     <sub-sub-section id="rl-methodology" title="Methodology">
                         <p>
                             Reinforcement learning problems are often modeled as a Markov Decision Process (MDP),
-                            defined by a tuple <KatexInline formula="\langle \mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma
+                            defined by a tuple
+                            <KatexInline formula="\langle \mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma
                             \rangle" />, where:
                         </p>
                         <ul>
-                            <li><KatexInline formula="\mathcal{S}" /> is the set of possible states,</li>
-                            <li><KatexInline formula="\mathcal{A}" /> is the set of actions,</li>
-                            <li><KatexInline formula="\mathcal{P}(s' | s, a)" /> is the transition probability function,</li>
-                            <li><KatexInline formula="\mathcal{R}(s, a)" /> is the reward received after taking action <KatexInline formula="a" /> in state <KatexInline formula="s" />,</li>
-                            <li><KatexInline formula="\gamma \in [0, 1]" /> is the discount factor for future rewards.</li>
+                            <li>
+                                <KatexInline formula="\mathcal{S}" /> is the set of possible states,
+                            </li>
+                            <li>
+                                <KatexInline formula="\mathcal{A}" /> is the set of actions,
+                            </li>
+                            <li>
+                                <KatexInline formula="\mathcal{P}(s' | s, a)" /> is the transition probability function,
+                            </li>
+                            <li>
+                                <KatexInline formula="\mathcal{R}(s, a)" /> is the reward received after taking action
+                                <KatexInline formula="a" /> in state
+                                <KatexInline formula="s" />,
+                            </li>
+                            <li>
+                                <KatexInline formula="\gamma \in [0, 1]" /> is the discount factor for future rewards.
+                            </li>
                         </ul>
                         <p>
-                            The goal is to learn a policy <KatexInline formula="\pi(a|s)" /> that maximizes the expected cumulative reward:
-                            <KatexDisplay formula="J(\pi) = \mathbb{E}_{\pi} \left[ \sum_{t=0}^{\infty} \gamma^t r_t \right]" />
+                            The goal is to learn a policy
+                            <KatexInline formula="\pi(a|s)" /> that maximizes the expected cumulative reward:
+                            <KatexDisplay
+                                formula="J(\pi) = \mathbb{E}_{\pi} \left[ \sum_{t=0}^{\infty} \gamma^t r_t \right]" />
                         </p>
                         <p>
-                            The value function for a state under policy <KatexInline formula="\pi" /> is:
-                            <KatexDisplay formula="V^{\pi}(s) = \mathbb{E}_{\pi} \left[ \sum_{t=0}^{\infty} \gamma^t r_t \mid s_0 = s \right]" />
+                            The value function for a state under policy
+                            <KatexInline formula="\pi" /> is:
+                            <KatexDisplay
+                                formula="V^{\pi}(s) = \mathbb{E}_{\pi} \left[ \sum_{t=0}^{\infty} \gamma^t r_t \mid s_0 = s \right]" />
                         </p>
                         <p>
                             The action-value function (Q-function) is:
@@ -251,7 +339,8 @@
                             a \right]" />
                         </p>
                         <p>
-                            An optimal policy <KatexInline formula="\pi^*" /> satisfies:
+                            An optimal policy
+                            <KatexInline formula="\pi^*" /> satisfies:
                             <KatexDisplay formula="Q^{\pi^*}(s, a) = \max_{\pi} Q^{\pi}(s, a)" />
                             This formulation enables reinforcement learning agents to develop optimal decision-making
                             strategies through experiential learning, significantly reducing dependence on labeled
@@ -259,23 +348,45 @@
                             classification, registration, and synthesis, where annotated data remains scarce.
                         </p>
 
-                        <div>
-                            <p><strong>Algorithm: Generic Reinforcement Learning Procedure</strong></p>
-                            <ol>
-                                <li><strong>Input:</strong> Environment <KatexInline formula="\mathcal{E}" />, initial policy <KatexInline formula="\pi_\theta" /></li>
-                                <li>Initialize policy parameters <KatexInline formula="\theta" /> randomly</li>
-                                <li>FOR each episode</li>
-                                <li>&nbsp;&nbsp;Initialize state <KatexInline formula="s_0" /></li>
-                                <li>&nbsp;&nbsp;FOR each step <KatexInline formula="t = 0, 1, 2, \dots" /> until terminal state</li>
-                                <li>&nbsp;&nbsp;&nbsp;&nbsp;Select action <KatexInline formula="a_t \sim \pi_\theta(a_t|s_t)" /></li>
-                                <li>&nbsp;&nbsp;&nbsp;&nbsp;Execute <KatexInline formula="a_t" />, observe reward <KatexInline formula="r_t" /> and next state <KatexInline formula="s_{t+1}" />
-                                </li>
-                                <li>&nbsp;&nbsp;&nbsp;&nbsp;Update policy parameters <KatexInline formula="\theta" /> using transition <KatexInline formula="(s_t,
-                                    a_t, r_t, s_{t+1})" /></li>
-                                <li>&nbsp;&nbsp;ENDFOR</li>
-                                <li>ENDFOR</li>
-                                <li><strong>Output:</strong> Trained policy <KatexInline formula="\pi_\theta" /></li>
-                            </ol>
+                        <div class="algorithm-container">
+                            <div class="algorithm-box">
+                                <div class="algorithm-title">Algorithm 2 Generic Reinforcement Learning Procedure</div>
+                                <div class="algorithm-content">
+                                    <div class="algorithm-line">
+                                        <span class="line-number">1:</span> <span class="algorithm-keyword">Input:</span> Environment <KatexInline formula="\mathcal{E}" />, initial policy <KatexInline formula="\pi_\theta" />
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">2:</span> Initialize policy parameters <KatexInline formula="\theta" /> randomly
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">3:</span> <span class="algorithm-keyword">for</span> each episode <span class="algorithm-keyword">do</span>
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">4:</span> <span class="algorithm-indent"></span>Initialize state <KatexInline formula="s_0" />
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">5:</span> <span class="algorithm-indent"></span><span class="algorithm-keyword">for</span> each step <KatexInline formula="t = 0, 1, 2, \dots" /> until terminal state <span class="algorithm-keyword">do</span>
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">6:</span> <span class="algorithm-indent"></span><span class="algorithm-indent"></span>Select action <KatexInline formula="a_t \sim \pi_\theta(a_t|s_t)" />
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">7:</span> <span class="algorithm-indent"></span><span class="algorithm-indent"></span>Execute <KatexInline formula="a_t" />, observe reward <KatexInline formula="r_t" /> and next state <KatexInline formula="s_{t+1}" />
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">8:</span> <span class="algorithm-indent"></span><span class="algorithm-indent"></span>Update policy parameters <KatexInline formula="\theta" /> using transition <KatexInline formula="(s_t, a_t, r_t, s_{t+1})" />
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">9:</span> <span class="algorithm-indent"></span><span class="algorithm-keyword">end for</span>
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">10:</span> <span class="algorithm-keyword">end for</span>
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">11:</span> <span class="algorithm-keyword">Output:</span> Trained policy <KatexInline formula="\pi_\theta" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <p>
@@ -294,7 +405,7 @@
                             lung, prostate) and imaging modalities (e.g., MRI, CT, ultrasound).
                         </p>
 
-                        <div class="diagram" style="max-width: 65%; margin: 1rem auto;">
+                        <div class="diagram" style="max-width: 70%; margin: 1rem auto;">
                             <img src="../assets/Blue.jpg" alt="Applications of RL in medical imaging">
                             <p class="image-caption">Blue box covers image analysis tasks; green box covers anatomical
                                 sites; yellow box covers imaging modalities.</p>
@@ -337,6 +448,9 @@
                         distribution of training data, these models generate novel samples that maintain critical
                         anatomical and pathological features while simultaneously preserving patient privacy.
                     </p>
+
+                                        
+
                     <sub-sub-section id="gans" title="Generative Adversarial Networks (GANs)">
                         <p>
                             GANs consist of a generator that creates synthetic images and a discriminator that
@@ -393,7 +507,9 @@
                             \mu_y^2 + C_1)(\sigma_x^2 + \sigma_y^2 + C_2)}" />
                         </p>
                         <p>
-                            where <KatexInline formula="\mu,\sigma" /> denote mean/variance of image patches, <KatexInline formula="C_1,C_2" /> stabilize division.
+                            where
+                            <KatexInline formula="\mu,\sigma" /> denote mean/variance of image patches,
+                            <KatexInline formula="C_1,C_2" /> stabilize division.
                         </p>
                         <p>
                             The result of the GAN training is a generator capable of producing synthetic GGNs that
@@ -420,6 +536,92 @@
                             <Reference citationKey="songScoreBasedGenerativeModeling2021" />.
                         </p>
 
+                        <div class="huggingface-container">
+                            <h4>Interactive Demo: EchoNet-Synthetic Echocardiogram Synthesis</h4>
+                            <div class="demo-image" style="max-width: 75%; margin: 1rem auto;">
+                                <img src="../assets/huggingface_demoimage.png" alt="Echocardiogram example image" />
+                            </div>
+                            <div class="demo-link">
+                                <a href="https://huggingface.co/spaces/HReynaud/EchoNet-Synthetic" target="_blank" rel="noopener noreferrer" class="huggingface-button">
+                                    <span class="button-icon">🤗</span>
+                                    Try EchoNet-Synthetic on Hugging Face
+                                </a>
+                            </div>
+                            <!-- <p class="demo-caption">
+                                EchoNet-Synthetic is an implementation of diffusion models that can generate echocardiogram sequences.
+                            </p> -->
+                        </div>
+
+
+
+                        <p>
+                            Consider a sequence of positive noise scales
+                            <KatexInline formula="0 < \beta_1, \dots, \beta_N < 1" />. For each
+                            training data point
+                            <KatexInline formula="x_0 \sim p_{data}(x)" />, construct a discrete Markov chain
+                            <KatexInline formula="\{X_0,
+                                X_1, \dots, X_N\}" /> where:
+                        </p>
+                        <p>
+                            <KatexDisplay
+                                formula="p(x_t|x_{t-1}) = \mathcal{N}(x_t; \sqrt{1-\beta_t}x_{t-1}, \beta_t\mathbf{I})" />
+                        </p>
+                        <p>
+                            The marginal distribution after
+                            <KatexInline formula="t" /> steps becomes:
+                        </p>
+                        <p>
+                            <KatexDisplay formula="q_t(x_t|x_0) = \mathcal{N}(x_t; \sqrt{\alpha_t}x_0, (1-\alpha_t)\mathbf{I}), \quad
+                                    \alpha_t = \prod_{s=1}^t (1-\beta_s)" />
+                        </p>
+                        <p>
+                            The perturbed data distribution is defined as:
+                        </p>
+                        <p>
+                            <KatexDisplay
+                                formula="p_{\alpha_t}(\tilde{x}) = \int p_{data}(x)q_{\alpha_t}(\tilde{x}|x)dx" />
+                        </p>
+                        <p>
+                            with noise scales chosen such that
+                            <KatexInline formula="X_N \approx \mathcal{N}(0,\mathbf{I})" />.
+                        </p>
+                        <p>
+                            The variational Markov chain in the reverse direction is parameterized as:
+                        </p>
+                        <p>
+                            <KatexDisplay formula="p_\theta(x_{t-1}|x_t) = \mathcal{N}\left(x_{t-1}; \frac{1}{\sqrt{1-\beta_t}}(x_t +
+                                    \beta_t s_\theta(x_t,t)), \beta_t\mathbf{I}\right)" />
+                        </p>
+                        <p>
+                            After obtaining the optimal model
+                            <KatexInline formula="s_\theta^*" />, samples's generation is as shown in
+                            Algorithm 3 DDPM Ancestral Sampling.
+                        </p>
+
+                        <div class="algorithm-container">
+                            <div class="algorithm-box">
+                                <div class="algorithm-title">Algorithm 3 DDPM Ancestral Sampling</div>
+                                <div class="algorithm-content">
+                                    <div class="algorithm-line">
+                                        <span class="line-number">1:</span> Initialize <KatexInline formula="x_N \sim \mathcal{N}(0,\mathbf{I})" />
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">2:</span> <span class="algorithm-keyword">for</span> <KatexInline formula="t = N" /> downto <KatexInline formula="1" /> <span class="algorithm-keyword">do</span>
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">3:</span> <span class="algorithm-indent"></span><KatexInline formula="x_{t-1} = \frac{1}{\sqrt{1-\beta_t}}(x_t + \beta_t s_\theta^*(x_t,t)) + \sqrt{\beta_t}z_t" />, <KatexInline formula="z_t \sim \mathcal{N}(0,\mathbf{I})" />
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">4:</span> <span class="algorithm-keyword">end for</span>
+                                    </div>
+                                    <div class="algorithm-line">
+                                        <span class="line-number">5:</span> Return <KatexInline formula="x_0" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class="diagram" style="max-width: 75%; margin: 1rem auto;">
                             <img src="../assets/diffusion_model.jpg" alt="Schematic overview of a diffusion model">
                             <p class="image-caption">A schematic overview of a diffusion model in training and sampling
@@ -432,65 +634,20 @@
                         </div>
 
                         <p>
-                            Consider a sequence of positive noise scales <KatexInline formula="0 < \beta_1, \dots, \beta_N < 1" />. For each
-                                training data point <KatexInline formula="x_0 \sim p_{data}(x)" />, construct a discrete Markov chain <KatexInline formula="\{X_0,
-                                X_1, \dots, X_N\}" /> where: </p>
-                                <p>
-                                    <KatexDisplay formula="p(x_t|x_{t-1}) = \mathcal{N}(x_t; \sqrt{1-\beta_t}x_{t-1}, \beta_t\mathbf{I})" />
-                                </p>
-                                <p>
-                                    The marginal distribution after <KatexInline formula="t" /> steps becomes:
-                                </p>
-                                <p>
-                                    <KatexDisplay formula="q_t(x_t|x_0) = \mathcal{N}(x_t; \sqrt{\alpha_t}x_0, (1-\alpha_t)\mathbf{I}), \quad
-                                    \alpha_t = \prod_{s=1}^t (1-\beta_s)" />
-                                </p>
-                                <p>
-                                    The perturbed data distribution is defined as:
-                                </p>
-                                <p>
-                                    <KatexDisplay formula="p_{\alpha_t}(\tilde{x}) = \int p_{data}(x)q_{\alpha_t}(\tilde{x}|x)dx" />
-                                </p>
-                                <p>
-                                    with noise scales chosen such that <KatexInline formula="X_N \approx \mathcal{N}(0,\mathbf{I})" />.
-                                </p>
-                                <p>
-                                    The variational Markov chain in the reverse direction is parameterized as:
-                                </p>
-                                <p>
-                                    <KatexDisplay formula="p_\theta(x_{t-1}|x_t) = \mathcal{N}\left(x_{t-1}; \frac{1}{\sqrt{1-\beta_t}}(x_t +
-                                    \beta_t s_\theta(x_t,t)), \beta_t\mathbf{I}\right)" />
-                                </p>
-                                <p>
-                                    After obtaining the optimal model <KatexInline formula="s_\theta^*" />, samples's generation is as shown in
-                                    Algorithm: DDPM Ancestral Sampling.
-                                </p>
-
-                                <div>
-                                    <p><strong>Algorithm: DDPM Ancestral Sampling</strong></p>
-                                    <ol>
-                                        <li>Initialize <KatexInline formula="x_N \sim \mathcal{N}(0,\mathbf{I})" /></li>
-                                        <li>FOR <KatexInline formula="t = N" /> downto <KatexInline formula="1" /></li>
-                                        <li>&nbsp;&nbsp;<KatexInline formula="x_{t-1} = \frac{1}{\sqrt{1-\beta_t}}(x_t + \beta_t
-                                            s_\theta^*(x_t,t)) + \sqrt{\beta_t}z_t" />, <KatexInline formula="z_t \sim
-                                            \mathcal{N}(0,\mathbf{I})" /></li>
-                                        <li>ENDFOR</li>
-                                        <li>Return <KatexInline formula="x_0" /></li>
-                                    </ol>
-                                </div>
-
-                                <p>
-                                    Diffusion models are particularly well-suited for medical image generation due to
-                                    their ability to produce high-quality, diverse, and anatomically accurate synthetic
-                                    images. Their iterative denoising process ensures fine-grained control over the
-                                    generated data, preserving critical medical details. Additionally, diffusion models
-                                    are robust to noise and can effectively model complex data distributions, making
-                                    them ideal for handling the variability and precision required in medical imaging.
-                                    These characteristics make diffusion models a powerful tool for augmenting datasets,
-                                    improving model generalization, and addressing data scarcity challenges in medical
-                                    imaging applications.
-                                </p>
+                            Diffusion models are particularly well-suited for medical image generation due to
+                            their ability to produce high-quality, diverse, and anatomically accurate synthetic
+                            images. Their iterative denoising process ensures fine-grained control over the
+                            generated data, preserving critical medical details. Additionally, diffusion models
+                            are robust to noise and can effectively model complex data distributions, making
+                            them ideal for handling the variability and precision required in medical imaging.
+                            These characteristics make diffusion models a powerful tool for augmenting datasets,
+                            improving model generalization, and addressing data scarcity challenges in medical
+                            imaging applications.
+                        </p>
+                        
+                        
                     </sub-sub-section>
+   
                 </sub-section>
 
             </article-section>
@@ -709,6 +866,33 @@ import FooterComponent from './Footer.vue';
 import Reference from './Reference.vue';
 import KatexInline from './KatexInline.vue';
 import KatexDisplay from './KatexDisplay.vue';
+
+import { onMounted } from 'vue';
+import { Niivue } from '@niivue/niivue';
+ 
+ // Initialize NiiVue on mount
+ onMounted(() => {
+     const nv = new Niivue({
+         isColorbar: true, // Show colorbar
+         isOrientationCube: true, // Show orientation cube
+         backColor: [0, 0, 0, 1], // Background color
+     });
+ 
+     // Attach NiiVue to the canvas
+     nv.attachTo('niivue-canvas');
+ 
+     // Load a sample volume
+     const volumeList = [
+         {
+             url: 'https://niivue.github.io/niivue-demo-images/mni152.nii.gz', // Sample NIfTI file
+             colormap: 'gray', // Colormap
+             opacity: 1.0, // Opacity
+             visible: true, // Visibility
+         },
+     ];
+ 
+     nv.loadVolumes(volumeList);
+ });
 </script>
 
 <style scoped>
@@ -718,7 +902,7 @@ import KatexDisplay from './KatexDisplay.vue';
     border-radius: 0.5rem;
     overflow: hidden;
     box-shadow: 0 0.25rem 0.9rem var(--shadow-color);
-    max-width: 1200px;
+    max-width: 700px;
     /* 限制最大宽度 */
     aspect-ratio: 16 / 9;
     /* 设置宽高比为 16:9 */
@@ -743,6 +927,18 @@ import KatexDisplay from './KatexDisplay.vue';
     /* 限制段落宽度为75个字符 */
     margin-left: auto;
     margin-right: auto;
+}
+
+.article-content ul {
+    max-width: 85ch;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+}
+
+.article-content ul li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
 }
 
 .hero-image,
@@ -838,17 +1034,142 @@ import KatexDisplay from './KatexDisplay.vue';
     margin-left: auto;
     margin-right: auto;
 }
-
 .video-container {
     width: 100%;
-    margin: 25px 0;
+    max-width: 800px;
+    margin: 25px auto;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 15px var(--shadow-color);
+    display: flex;
+    justify-content: center;
 }
 
 .video-container video {
     width: 100%;
     height: auto;
+}
+
+.algorithm-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+    width: 100%;
+}
+
+.algorithm-box {
+    width: 90%;
+    max-width: 600px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 0.5rem 0;
+}
+
+.algorithm-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #000;
+}
+
+.algorithm-content {
+    padding: 0.5rem 0;
+}
+
+.algorithm-line {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.25rem;
+    line-height: 1.6;
+}
+
+.line-number {
+    min-width: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.algorithm-keyword {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.algorithm-indent {
+    display: inline-block;
+    width: 2rem;
+}
+
+.huggingface-container {
+    margin: 2.5rem auto;
+    width: 95%;
+    max-width: 900px;
+    background-color: var(--card-background);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 0.25rem 0.75rem var(--shadow-color);
+}
+
+.huggingface-container h4 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--heading-color);
+    font-size: 1.3rem;
+}
+
+.demo-description {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.demo-image {
+    width: 100%;
+    margin: 1rem auto;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: center;
+}
+
+.demo-image img {
+    width: 100%;
+    height: auto;
+}
+
+.demo-link {
+    margin: 1rem auto;
+    text-align: center;
+}
+
+.huggingface-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.huggingface-button:hover {
+    background-color: #0056b3;
+}
+
+.button-icon {
+    margin-right: 0.5rem;
+}
+
+.demo-caption {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #777;
+    font-style: italic;
 }
 </style>
