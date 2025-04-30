@@ -270,45 +270,6 @@ The composite loss combines adversarial and similarity terms for both discrimina
 \end{align}
 
 where $\mu,\sigma$ denote mean/variance of image patches, $C_1,C_2$ stabilize division.
-
-% \begin{algorithm}[htb
-%     ]
-%     \caption{Dual-Discriminator GAN Training}
-%     \label{alg:ddgan}
-%     \begin{algorithmic}[1]
-%     \STATE Initialize generator $G$, ROI discriminator $D_{\text{ROI}}$, and whole image discriminator $D_{\text{whole}}$ with pre-trained SRGAN/ResNet weights
-%     \FOR{each training batch}
-%         \STATE Load input image $x_{\text{in}}$ (with erased ROI) and ground truth $x_{\text{target}}$
-%         \STATE Generate synthetic image: $\hat{x} \leftarrow G(x_{\text{in}})$
-        
-%         \STATE \textbf{Update $D_{\text{ROI}}$:}
-%         \STATE Extract ROI patches: $p_{\text{real}} \leftarrow x_{\text{target}}$, $p_{\text{fake}} \leftarrow \hat{x}$
-%         \STATE Compute discriminator loss: 
-%         \[
-%             \mathcal{L}_{D_{\text{ROI}}} = -\log D_{\text{ROI}}(p_{\text{real}}) - \log\left(1 - D_{\text{ROI}}(p_{\text{fake}})\right)
-%         \]
-%         \STATE Update $D_{\text{ROI}}$ via gradient descent on $\nabla_{\theta_{D_{\text{ROI}}}} \mathcal{L}_{D_{\text{ROI}}}$
-        
-%         \STATE \textbf{Update $D_{\text{whole}}$:}
-%         \STATE Compute loss:
-%         \[
-%             \mathcal{L}_{D_{\text{whole}}} = -\log D_{\text{whole}}(x_{\text{target}}) - \log\left(1 - D_{\text{whole}}(\hat{x})\right)
-%         \]
-%         \STATE Update $D_{\text{whole}}$ via gradient descent on $\nabla_{\theta_{D_{\text{whole}}}} \mathcal{L}_{D_{\text{whole}}}$
-    
-%         \STATE \textbf{Update Generator $G$:}
-%         \STATE Compute adversarial loss:
-%         \[
-%             \mathcal{L}_{\text{adv}} = -\log D_{\text{ROI}}(\hat{x}) - \log D_{\text{whole}}(\hat{x})
-%         \]
-%         \STATE Compute similarity loss $\mathcal{L}_{\text{sim}}$ (see Eq.~3)
-%         \STATE Update $G$ by minimizing:
-%         \[
-%             \nabla_{\theta_G} \left( \lambda_{\text{adv}} \mathcal{L}_{\text{adv}} + \lambda_{\text{sim}} \mathcal{L}_{\text{sim}} \right)
-%         \]
-%     \ENDFOR
-%     \end{algorithmic}
-% \end{algorithm}
     
 The result of the GAN training is a generator capable of producing synthetic GGNs that closely resemble real lesions, as shown in Figure \ref{fig:gan_results}. The generated images can be used to augment existing datasets, improving the performance of downstream tasks such as classification and segmentation.
 
@@ -356,12 +317,6 @@ The variational Markov chain in the reverse direction is parameterized as:
 \begin{equation}
 p_\theta(x_{t-1}|x_t) = \mathcal{N}\left(x_{t-1}; \frac{1}{\sqrt{1-\beta_t}}(x_t + \beta_t s_\theta(x_t,t)), \beta_t\mathbf{I}\right)
 \end{equation}
-
-% The model is trained with a re-weighted ELBO variant:
-
-% \begin{equation}
-% \theta^* = \arg\min_\theta \sum_{t=1}^N (1-\alpha_t) \mathbb{E}_{p_{data}(x)}\mathbb{E}_{q_t(\tilde{x}|x)} \| s_\theta(\tilde{x},t) - \nabla_x \log q_t(\tilde{x}|x) \|_2^2
-% \end{equation}
 
 After obtaining the optimal model $s_\theta^*$, samples's generation is as shown in Algorithm \ref{alg:ddpm_sampling}. 
 
