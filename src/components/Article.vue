@@ -5,7 +5,7 @@
             author="SN: 24076607" />
 
         <div class="article-content">
-            <article-section id="application-domain" title="Application Domain and Challenges">
+            <article-section id="application-domain" title="1. Application Domain and Challenges">
                 <sub-section id="application-domin-medical-imaging" title="The Application Domain: Medical Imaging">
                     <p>
                         Medical imaging is a critical field in healthcare, providing essential tools for diagnosing and
@@ -133,7 +133,7 @@
             </article-section>
 
             <article-section id="solutions-to-data-scarcity-in-medical-imaging"
-                title="AI/ML Solutions to Data Scarcity in Medical Imaging">
+                title="2. AI/ML Solutions to Data Scarcity in Medical Imaging">
                 <sub-section id="self-supervised-learning" title="Self-Supervised Learning (SSL)">
                     <p>
                         Self-supervised learning (SSL) enables the use of large amounts of unlabeled data to pretrain
@@ -653,7 +653,7 @@
             </article-section>
 
             <article-section id="ethical-considerations"
-                title="Ethical Considerations in Applying AI to Medical Imaging">
+                title="3. Ethical Considerations in Applying AI to Medical Imaging">
                 <p>
                     The integration of AI into medical imaging has yielded impressive results, but also raises several
                     ethical concerns. These issues must be thoroughly addressed to ensure safe, equitable, and
